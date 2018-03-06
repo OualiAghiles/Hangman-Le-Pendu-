@@ -9,8 +9,10 @@ html(lang='en')
 		.container
 			h1 Jeux du pendu
 			.dessin-pendu
-			.mot-hasar
-			.lettre-true
-			.lettre-fase
+				include hangman
+			.main
+				.mot-hasar
+				.lettre-true
+				.lettre-fase
 		// scripts
 		script(src="assets/scripts/app.js")

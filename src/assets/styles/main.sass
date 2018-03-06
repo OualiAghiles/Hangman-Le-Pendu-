@@ -9,21 +9,25 @@ body
   width: 1200px
   margin: auto
 .dessin-pendu
-  width: 70%
-  height: 120px
+  width: 29%
+  height: 400px
   border: 3px solid #aaa
   background: #fff
+  float: left
+  margin-right: 2%
+.main
+  width: 69%
+  float: left
 .mot-hasar,
 .lettre-true,
 .lettre-fase
-  width: 70%
   height: 120px
   border: 3px solid #aaa
   background: #fff
-  margin-top: 10px
+  margin-bottom: 10px
   text-align: center
   color: #555
-.mot-hasar
+.lettre-true
   ul,
   li
     padding: 0
@@ -34,3 +38,11 @@ body
     border: 1px solid #ccc
     margin-right: 15px
     display: inline-block
+.dessin-pendu
+  #hangman
+    max-width: 400px
+    .parts
+      opacity: 0
+      transition: opacity 0.5s ease
+      &.visible
+        opacity: 1

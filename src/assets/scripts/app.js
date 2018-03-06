@@ -1418,11 +1418,15 @@ var bonneReponse = []
 // initialisation du nombre d'essais a 0
 var essais = 0
 // generer les underscore
-var underScore = document.querySelector('.mot-hasar');
+var underScore = document.querySelector('.lettre-true');
 // generer l'html selon la longueur du mot choisit
 var entry = document.createElement('ul');
+// hangmanParts
+var hangmanParts = document.querySelectorAll('#hangman .parts')
 // limite des essais
-var nbrEssais = 7
+var nbrEssais = hangmanParts.length
+// reponse DOM
+var perdu = document.querySelector('.mot-hasar')
 // fonction pour generer les _ representant la longueur du mot
 var genererTiret = function () {
 	for (var i = 0; i < motChoisit.length; i++) {
@@ -1463,23 +1467,30 @@ document.addEventListener('keypress', function(event){
 			}
 		 } else {
 			 // condition pour limiter les essais
-		 		if (essais >= nbrEssais - 1) {
+		 		if (essais > nbrEssais - 1) {
 					// Afficher defaite et demande de rejouer
 					console.log("perdu");
 					// si defaite ajouter le texte pour monter le mot non trouver
 					console.log(motChoisi);
+					perdu.innerHTML = motChoisi
 					// demender de rejouer
 		 			return false
 		 		} else {
 				// calcule du nombre d'essais restant
 				var tentative = nbrEssais - (essais + 1)
-				// incrementation des essais
-				essais++
+				
 				// ajout des lettre erroner au tableau misses
 		 		misses.push(touche)
 				// affichage du nombre d'essais restant
 				console.log('Il vous reste ' + tentative + ' essais');
 				// ici code pour les image du pendu
+				var parts = hangmanParts[essais]
+				parts.classList.add('visible')
+				console.log(parts);
+				
+
+				// incrementation des essais
+				essais++
 		 		}
 		 }
 		 // comparer les chaine de caractères pour verifier si le joueur a gagner
