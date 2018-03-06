@@ -27,7 +27,7 @@ body
   margin-bottom: 10px
   text-align: center
   color: #555
-.mot-hasar
+.lettre-true
   ul,
   li
     padding: 0
@@ -41,3 +41,8 @@ body
 .dessin-pendu
   #hangman
     max-width: 400px
+    .parts
+      opacity: 0
+      transition: opacity 0.5s ease
+      &.visible
+        opacity: 1
