@@ -1427,6 +1427,8 @@ var hangmanParts = document.querySelectorAll('#hangman .parts')
 var nbrEssais = hangmanParts.length
 // reponse DOM
 var perdu = document.querySelector('.mot-hasar')
+// lettre erroner
+var toucheErroner = document.querySelector('.lettre-fase')
 // fonction pour generer les _ representant la longueur du mot
 var genererTiret = function () {
 	for (var i = 0; i < motChoisit.length; i++) {
@@ -1480,7 +1482,8 @@ document.addEventListener('keypress', function(event){
 				var tentative = nbrEssais - (essais + 1)
 				
 				// ajout des lettre erroner au tableau misses
-		 		misses.push(touche)
+				 misses.push(touche)
+				 toucheErroner.innerHTML = touche
 				// affichage du nombre d'essais restant
 				console.log('Il vous reste ' + tentative + ' essais');
 				// ici code pour les image du pendu
