@@ -1430,10 +1430,12 @@ var nbrEssais = hangmanParts.length
 var perdu = document.querySelector('.mot-hasar')
 // lettre erroner
 var toucheErroner = document.querySelector('.lettre-fase')
-var node = document.createElement("span"); // Create a <li> node
-
+var cmptEssais = document.createElement("span")
+cmptEssais.classList.add('cmptEssais')
 // fonction pour generer les _ representant la longueur du mot
 var genererTiret = function () {
+	cmptEssais.innerHTML = nbrEssais
+
 	for (var i = 0; i < motChoisit.length; i++) {
 		bonneReponse.push('_')
 		// creation de l'element li selon la longueur du mot
@@ -1466,6 +1468,7 @@ document.addEventListener('keypress', function (event) {
 				bonneReponse[i] = motChoisit[i]
 				// selectionner le bon element ou ajouter la lettre via le data-index
 				var maLettre = document.querySelector('li[data-index="' + i + '"]');
+				maLettre.classList.add('check')
 				// ajouter la lettre a l'element selectionner au prealable
 				maLettre.innerHTML = maLettre.innerHTML.replace(' _ ', touche)
 			}
@@ -1486,12 +1489,15 @@ document.addEventListener('keypress', function (event) {
 
 			// ajout des lettre erroner au tableau misses
 			misses.push(touche)
+			var span = document.createElement("span") // Create a <li> node
 			var textnode = document.createTextNode(touche); // Create a text node
-			node.appendChild(textnode); // Append the text to <li>
-			toucheErroner.appendChild(node); // Append <li> to <ul> with id="myList"
-
+			span.appendChild(textnode); // Append the text to <li>
+			toucheErroner.appendChild(span); // Append <li> to <ul> with id="myList"
 			// affichage du nombre d'essais restant
 			console.log('Il vous reste ' + tentative + ' essais');
+			cmptEssais.innerHTML = tentative;
+
+			perdu.appendChild(cmptEssais)
 			// ici code pour les image du pendu
 			var parts = hangmanParts[essais]
 			parts.classList.add('visible')
