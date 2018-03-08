@@ -1481,6 +1481,8 @@ document.addEventListener('keypress', function (event) {
 			// si defaite ajouter le texte pour monter le mot non trouver
 			console.log(motChoisi);
 			perdu.innerHTML = motChoisi
+			parts = hangmanParts[essais]
+			parts.classList.add('visible')
 			// demender de rejouer
 			return false
 		} else {
