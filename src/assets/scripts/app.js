@@ -42,14 +42,9 @@ var genererTiret = function () {
 		// ajout du ul au DOM
 		underScore.appendChild(entry)
 	}
-	console.log(underScore);
 	return bonneReponse
 }
-// creation d'element DOM des mauvaise reponse
-var elementPendu = function (tableParts, tab) {
-	var parts = tab[tableParts]
-	return parts.classList.add('visible')
-}
+
 // creation d'element DOM des mauvaise reponse
 var elementPenduFaulse = function (key) {
 	var span = document.createElement("span") // Create a <li> node
@@ -73,7 +68,6 @@ var essaisRestant = function (cmptRestant, nbrEssais) {
 	// affichage du nombre d'essais restant
 	cmptEssais.innerHTML = tentative
 	perdu.appendChild(cmptEssais)
-	console.log(cmptEssais);
 	
 	
 }
@@ -98,19 +92,21 @@ document.addEventListener('keypress', function (event) {
 		// condition pour limiter les essais
 		if (essais >= nbrEssais - 1) {
 			// Afficher defaite et demande de rejouer
-			elementPendu(essais, parts)
+			var parts = hangmanParts[essais]
+			parts.classList.add('visible')
 			// si defaite ajouter le texte pour monter le mot non trouver
-			perdu.innerHTML = motChoisi
-			elementPenduFaulse(touche)
+			perdu.innerHTML = motChoisi			
 			// demender de rejouer
+			modal('.modal')
 			return false
 		} else {
 			essaisRestant(essais, nbrEssais)
-
 			// ajout des lettre erroner au tableau misses
 			misses.push(touche)				
+			elementPenduFaulse(touche)
 			// ici code pour les image du pendu			
-			elementPendu(essais)
+			var parts = hangmanParts[essais]
+			parts.classList.add('visible')
 			// incrementation des essais
 			essais++
 		}
@@ -118,7 +114,7 @@ document.addEventListener('keypress', function (event) {
 	// comparer les chaine de caractères pour verifier si le joueur a gagner
 	if (JSON.stringify(bonneReponse) == JSON.stringify(motChoisit)) {
 		// message de felicitation
-		console.log('Bien jouer');
+		modal('.modal')
 		// demande de rejouer
 		return false
 	}
