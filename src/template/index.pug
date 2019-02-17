@@ -4,15 +4,28 @@ html(lang='en')
 		title Titre
 		meta(charset='UTF-8')
 		meta(name="viewport", content="width=device-width, initial-scale=1")
+		link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
 		link(rel="stylesheet", href="assets/styles/main.css")
 	body
+		include modal
+		section.hero
+			.container
+				.hero-body
+					.container
+						h1.title
+							| Jeux du pendu
 		.container
-			h1 Jeux du pendu
-			.dessin-pendu
-				include hangman
-			.main
-				.mot-hasar
-				.lettre-true
-				.lettre-fase
+			.columns
+				.dessin-pendu.is-one-third.column
+					include hangman
+				.main.is-tow-thirds.column
+					.mot-hasar
+						h3.title Essais restants
+					.lettre-true
+						h3.title Bonne Reponses
+					.lettre-fase
+						h3.title Mauvaise Réponse
 		// scripts
+		script(src="assets/scripts/mots.js")
+		script(src="assets/scripts/modal.js")
 		script(src="assets/scripts/app.js")

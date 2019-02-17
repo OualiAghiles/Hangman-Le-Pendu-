@@ -1,27 +1,13 @@
-*
-  box-sizing: border-box
-  font-family: sans-serif
-body
-  background: #ececec
-  padding: 1rem
-  margin: 0
-.container
-  width: 1200px
-  margin: auto
+@import 'bulma'
+
 .dessin-pendu
-  width: 29%
-  height: 400px
   border: 3px solid #aaa
   background: #fff
-  float: left
-  margin-right: 2%
-.main
-  width: 69%
-  float: left
+//.main
 .mot-hasar,
 .lettre-true,
 .lettre-fase
-  height: 120px
+  padding: 15px
   border: 3px solid #aaa
   background: #fff
   margin-bottom: 10px
@@ -34,10 +20,16 @@ body
     margin: 0
     list-style: none
   li
-    padding: 15px
-    border: 1px solid #ccc
-    margin-right: 15px
+    padding: 5px 10px
+    border: 2px solid #ccc
+    margin-right: 2px
     display: inline-block
+    transition: all 0.5s ease
+    &.check
+      border-color: #079992
+      background: #38ada9
+      color: #fff
+      font-size: 25px
 .dessin-pendu
   #hangman
     max-width: 400px
@@ -46,3 +38,21 @@ body
       transition: opacity 0.5s ease
       &.visible
         opacity: 1
+.lettre-fase
+  span
+    padding: 5px 10px
+    font-size: 25px
+    margin-right: 2px
+    display: inline-block
+    border: 2px solid #ccc
+    background: #efefef
+    color: #aaa
+.cmptEssais
+  width: 35px
+  height: 35px
+  font-size: 30px
+  line-height: 35px
+  padding: 5px 15px
+  color: #b71540
+  border: 2px solid #b71540
+  border-radius: 50%
